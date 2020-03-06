@@ -16,7 +16,13 @@
 
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title">{{msg}}</h1>
+          <div class="row">
+            <div class="columns">
+              <div class="column is-half is-offset-one-quarter">
+                <todo-card></todo-card>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -34,8 +40,15 @@
 </template>
 
 <script>
+
+import TodoCard from './components/TodoCard'
+
 export default {
   name: 'app',
+  components:{
+    TodoCard
+  },
+  
   data(){
     return{
       msg : 'ola mundo do VUE'
