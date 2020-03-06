@@ -7,7 +7,7 @@
                         <input class="input is-primary has-text-centered" type="text" placeholder="Nova Tarefa . . ." v-model="tarefa">
                     </p>
                     <p class="control">
-                        <a class="button is-success add-button">
+                        <a class="button is-success add-button" @click="enviarTarefa">
                             <span class="icon is-small">
                                 <i class="fa fa-plus"></i>
                             </span>
@@ -25,6 +25,14 @@ export default {
     data(){
         return {
             tarefa: ''
+        }
+    },
+    methods: {
+        enviarTarefa(){
+            if (this.tarefa != '') {
+                this.$emit('novaTarefa', this.tarefa)
+            }
+            this.tarefa = ''
         }
     }
 }

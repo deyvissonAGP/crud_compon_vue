@@ -10,9 +10,11 @@
         </header>
         <div class="card-content">
             <div class="content">
-                <novo-todo></novo-todo>
+                <novo-todo @novaTarefa="adicionarTarefa"></novo-todo>
             </div>
-            <div class="content"></div>
+            <div class="content">
+                <todo-list :tarefas="tarefas" @check="checkTarefa" @remover="removerTarefa"></todo-list>
+            </div>
         </div>
     </div>
 </template>
@@ -20,11 +22,13 @@
 <script>
 
 import NovoTodo from './NovoTodo'
+import TodoList from './TodoList'
 
 export default {
     name: 'todo-card',
     components: {
-        NovoTodo
+        NovoTodo,
+        TodoList
     },
     data(){
         return {
@@ -38,11 +42,23 @@ export default {
             let novaData = new Date()
             return `${this.dias[novaData.getDay()]}, ${novaData.getDate()} de ${this.meses[novaData.getMonth()]}`
         }
+    },
+    methods: {
+        adicionarTarefa(tarefa) {
+            let nova_tarefa = {'description': tarefa, 'checked': false}
+            this.tarefas.push(nova_tarefa)
+        },
+        checkTarefa(index) {
+            this.tarefas[index]['checked'] = !this.tarefas[index]['checked']
+        },
+        removerTarefa(index) {
+            this.tarefas.splice(index,1)
+        }
     }
 }
 </script>
 
-<style>
+<style scope>
     .card {
         border-radius: 10px;
     }
