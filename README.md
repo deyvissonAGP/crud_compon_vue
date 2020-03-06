@@ -17,3 +17,5 @@ npm run build
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
 # CRUD em componentes vuejs
+
+> Criação de uma lista onde haverá um a opção de criação, atualização e deleção de um arquivo.
